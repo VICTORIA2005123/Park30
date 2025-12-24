@@ -1,0 +1,48 @@
+type User @table {
+  displayName: String!
+  email: String!
+  passwordHash: String!
+  createdAt: Timestamp!
+  phoneNumber: String
+  photoUrl: String
+}
+
+type ParkingSpot @table {
+  owner: User!
+  address: String!
+  latitude: Float!
+  longitude: Float!
+  dailyRate: Float!
+  createdAt: Timestamp!
+  description: String
+  amenities: [String]
+  photoUrl: String
+}
+
+type Availability @table {
+  parkingSpot: ParkingSpot!
+  startTime: Timestamp!
+  endTime: Timestamp!
+  isAvailable: Boolean!
+  recurrencePattern: String
+}
+
+type Booking @table {
+  booker: User!
+  parkingSpot: ParkingSpot!
+  startTime: Timestamp!
+  endTime: Timestamp!
+  totalPrice: Float!
+  status: String!
+  createdAt: Timestamp!
+  paymentId: String
+}
+
+type Review @table {
+  reviewer: User!
+  parkingSpot: ParkingSpot!
+  booking: Booking!
+  rating: Int!
+  createdAt: Timestamp!
+  comment: String
+}

@@ -1,0 +1,96 @@
+mutation CreateDemoData @transaction @auth(level: PUBLIC, insecureReason: "This mutation is used to seed the database with example data") {
+  user_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      displayName: "demouser1",
+      email: "demouser1@example.com",
+      passwordHash: "passwordhash1",
+      createdAt: "2024-04-03T00:00:00Z"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      displayName: "demouser2",
+      email: "demouser2@example.com",
+      passwordHash: "passwordhash2",
+      createdAt: "2024-04-03T00:00:00Z"
+    }
+  ])
+  parkingSpot_insertMany(data: [
+    {
+      id: "650e8400-e29b-41d4-a716-446655440000",
+      ownerId: "550e8400-e29b-41d4-a716-446655440000",
+      address: "123 Main St",
+      latitude: 34.0522,
+      longitude: -118.2437,
+      dailyRate: 25.00,
+      createdAt: "2024-04-03T00:00:00Z"
+    },
+    {
+      id: "650e8400-e29b-41d4-a716-446655440001",
+      ownerId: "550e8400-e29b-41d4-a716-446655440001",
+      address: "456 Elm St",
+      latitude: 34.0522,
+      longitude: -118.2437,
+      dailyRate: 30.00,
+      createdAt: "2024-04-03T00:00:00Z"
+    }
+  ])
+  booking_insertMany(data: [
+    {
+      id: "750e8400-e29b-41d4-a716-446655440000",
+      bookerId: "550e8400-e29b-41d4-a716-446655440000",
+      parkingSpotId: "650e8400-e29b-41d4-a716-446655440000",
+      startTime: "2024-04-04T10:00:00Z",
+      endTime: "2024-04-04T12:00:00Z",
+      totalPrice: 50.00,
+      status: "Confirmed",
+      createdAt: "2024-04-03T00:00:00Z"
+    },
+    {
+      id: "750e8400-e29b-41d4-a716-446655440001",
+      bookerId: "550e8400-e29b-41d4-a716-446655440001",
+      parkingSpotId: "650e8400-e29b-41d4-a716-446655440001",
+      startTime: "2024-04-05T14:00:00Z",
+      endTime: "2024-04-05T16:00:00Z",
+      totalPrice: 60.00,
+      status: "Confirmed",
+      createdAt: "2024-04-03T00:00:00Z"
+    }
+  ])
+  review_insertMany(data: [
+    {
+      id: "850e8400-e29b-41d4-a716-446655440000",
+      bookingId: "750e8400-e29b-41d4-a716-446655440000",
+      parkingSpotId: "650e8400-e29b-41d4-a716-446655440000",
+      reviewerId: "550e8400-e29b-41d4-a716-446655440000",
+      rating: 5,
+      comment: "Great parking spot!",
+      createdAt: "2024-04-04T12:00:00Z"
+    },
+    {
+      id: "850e8400-e29b-41d4-a716-446655440001",
+      bookingId: "750e8400-e29b-41d4-a716-446655440001",
+      parkingSpotId: "650e8400-e29b-41d4-a716-446655440001",
+      reviewerId: "550e8400-e29b-41d4-a716-446655440001",
+      rating: 4,
+      comment: "Good location, easy to find.",
+      createdAt: "2024-04-05T16:00:00Z"
+    }
+  ])
+  availability_insertMany(data: [
+    {
+      id: "950e8400-e29b-41d4-a716-446655440000",
+      parkingSpotId: "650e8400-e29b-41d4-a716-446655440000",
+      startTime: "2024-04-06T08:00:00Z",
+      endTime: "2024-04-06T18:00:00Z",
+      isAvailable: true
+    },
+    {
+      id: "950e8400-e29b-41d4-a716-446655440001",
+      parkingSpotId: "650e8400-e29b-41d4-a716-446655440001",
+      startTime: "2024-04-07T09:00:00Z",
+      endTime: "2024-04-07T17:00:00Z",
+      isAvailable: true
+    }
+  ])
+}

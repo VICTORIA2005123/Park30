@@ -1,0 +1,30 @@
+mutation CreateUser @auth(level: USER) {
+  user_insert(data: {
+    displayName: "New User",
+    email: "newuser@example.com",
+    passwordHash: "hashed_password",
+    createdAt_expr: "request.time"
+  })
+}
+
+query GetParkingSpot @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  parkingSpot(id: "some-parking-spot-uuid") {
+    id
+    address
+    dailyRate
+    latitude
+    longitude
+  }
+}
+
+mutation UpdateBookingStatus($id: UUID!, $status: String!) @auth(level: USER) {
+  booking_update(key: {id: $id}, data: {status: $status})
+}
+
+query ListAvailableParkingSpots @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  parkingSpots(where: {dailyRate: {gt: 0}}) {
+    id
+    address
+    dailyRate
+  }
+}
