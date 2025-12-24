@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "752207806635",
+    "firebase_url": "https://marwadiparking-default-rtdb.firebaseio.com",
+    "project_id": "marwadiparking",
+    "storage_bucket": "marwadiparking.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:752207806635:android:6f41b5f0a08b76db69b7ee",
+        "android_client_info": {
+          "package_name": "com.example.marwadi_parking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPfoDd3wSJI4bF-4IjOqKw4a9vPwHItrI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
